@@ -12,6 +12,7 @@ import { useStellarWallet } from "@/hooks/useStellarWallet";
 import { useWalletFlow } from "@/hooks/useWalletFlow";
  main
 import { OfframpStep } from "@/types/stellaramp";
+import { TransactionStorage, type Transaction } from "@/lib/transaction-storage";
 
 export default function Home() {
   const { wallet, isConnecting: isWalletConnecting, error, connect, disconnect } = useStellarWallet();
@@ -132,7 +133,7 @@ export default function Home() {
           </div>
           
           <div>
-            <RecentOfframpsTable />
+            <RecentOfframpsTable userTransactions={userTransactions} />
           </div>
           <div className="col-span-1 min-[1101px]:col-span-2 mt-4 max-[1100px]:block">
             {/* The ProgressSteps component now consumes the memoized steps from useWalletFlow */}
